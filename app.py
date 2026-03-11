@@ -20,10 +20,13 @@ st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap');
 
-html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
+html, body, [class*="css"] {
+    font-family: 'DM Sans', sans-serif;
+    color: #e8e8e8;
+}
 
 .stApp {
-    background: linear-gradient(135deg, #fdf6f0 0%, #fef0f5 50%, #f0f4fe 100%);
+    background: #0a0a0a;
 }
 
 #MainMenu, footer, header { visibility: hidden; }
@@ -31,63 +34,147 @@ html, body, [class*="css"] { font-family: 'DM Sans', sans-serif; }
 h1 {
     font-family: 'Fraunces', serif !important;
     font-weight: 600 !important;
-    color: #2d1b4e !important;
+    color: #ffffff !important;
     letter-spacing: -1px;
 }
 h2, h3 {
     font-family: 'Fraunces', serif !important;
-    color: #2d1b4e !important;
+    color: #e0e0e0 !important;
 }
 
+p, label, span, div {
+    color: #c8c8c8;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background: #111111 !important;
+    border-right: 1px solid #2a2a2a !important;
+}
+[data-testid="stSidebar"] * { color: #d0d0d0 !important; }
+
+/* Main content area */
+[data-testid="stAppViewContainer"] > section {
+    background: #0a0a0a;
+}
+
+/* Metric cards */
+[data-testid="metric-container"] {
+    background: #161616 !important;
+    border-radius: 16px !important;
+    padding: 16px !important;
+    border: 1px solid #2a2a2a !important;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4) !important;
+}
+[data-testid="metric-container"] * { color: #e0e0e0 !important; }
+[data-testid="stMetricValue"] { color: #ffffff !important; }
+[data-testid="stMetricDelta"] { color: #a0a0a0 !important; }
+
+/* Buttons */
 .stButton > button {
     background: linear-gradient(135deg, #b06ab3, #4568dc) !important;
-    color: white !important;
+    color: #ffffff !important;
     border: none !important;
     border-radius: 50px !important;
     padding: 10px 28px !important;
     font-family: 'DM Sans', sans-serif !important;
     font-weight: 500 !important;
-    box-shadow: 0 4px 15px rgba(176,106,179,0.3) !important;
+    box-shadow: 0 4px 20px rgba(176,106,179,0.25) !important;
     transition: all 0.3s ease !important;
 }
 .stButton > button:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 20px rgba(176,106,179,0.4) !important;
+    box-shadow: 0 8px 24px rgba(176,106,179,0.4) !important;
 }
 
-[data-testid="metric-container"] {
-    background: rgba(255,255,255,0.75) !important;
-    border-radius: 16px !important;
-    padding: 16px !important;
-    border: 1px solid rgba(255,255,255,0.9) !important;
-    box-shadow: 0 2px 12px rgba(180,140,200,0.08) !important;
+/* Sliders */
+[data-testid="stSlider"] > div > div > div > div {
+    background: linear-gradient(135deg, #b06ab3, #4568dc) !important;
 }
 
-[data-testid="stSidebar"] {
-    background: rgba(255,255,255,0.6) !important;
-    backdrop-filter: blur(20px);
-    border-right: 1px solid rgba(255,255,255,0.8);
+/* Select slider */
+[data-testid="stSelectSlider"] > div {
+    background: #1a1a1a !important;
+    border-radius: 12px;
 }
 
+/* Text area */
+textarea {
+    background: #161616 !important;
+    color: #e0e0e0 !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+}
+textarea:focus {
+    border-color: #b06ab3 !important;
+    box-shadow: 0 0 0 2px rgba(176,106,179,0.2) !important;
+}
+
+/* Checkboxes */
+[data-testid="stCheckbox"] label { color: #c8c8c8 !important; }
+
+/* Selectbox / dropdowns */
+[data-testid="stSelectbox"] > div > div {
+    background: #161616 !important;
+    border: 1px solid #2a2a2a !important;
+    border-radius: 12px !important;
+    color: #e0e0e0 !important;
+}
+
+/* Dataframe / table */
+[data-testid="stDataFrame"] {
+    background: #111111 !important;
+    border-radius: 12px;
+}
+.stDataFrame thead th {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+}
+.stDataFrame tbody tr:nth-child(even) {
+    background: #161616 !important;
+}
+
+/* Radio buttons */
+[data-testid="stRadio"] label { color: #c8c8c8 !important; }
+[data-testid="stRadio"] > div { gap: 4px; }
+
+/* Info / warning / success messages */
+[data-testid="stAlert"] {
+    background: #161616 !important;
+    border-radius: 12px !important;
+    border: 1px solid #2a2a2a !important;
+    color: #e0e0e0 !important;
+}
+
+/* Divider */
+hr { border-color: #2a2a2a !important; }
+
+/* Insight box */
 .insight-box {
-    background: linear-gradient(135deg, rgba(176,106,179,0.1), rgba(69,104,220,0.1));
+    background: linear-gradient(135deg, rgba(176,106,179,0.08), rgba(69,104,220,0.08));
     border-left: 3px solid #b06ab3;
     border-radius: 0 12px 12px 0;
     padding: 16px 20px;
     margin: 12px 0;
     font-style: italic;
-    color: #4a3060;
+    color: #c8b8e8;
 }
 
+/* Empty state */
 .empty-state {
     text-align: center;
     padding: 60px 20px;
-    color: #9b8ab8;
+    color: #555;
     font-family: 'Fraunces', serif;
 }
 .empty-state .icon { font-size: 64px; margin-bottom: 16px; }
-.empty-state h3 { color: #9b8ab8 !important; font-size: 1.4rem; }
-.empty-state p { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; }
+.empty-state h3 { color: #555 !important; font-size: 1.4rem; }
+.empty-state p { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: #444; }
+
+/* Input labels */
+.stSlider label, .stTextArea label { color: #a0a0a0 !important; }
+
+/* Plotly chart backgrounds already set to transparent — handled in layout */
 </style>
 """, unsafe_allow_html=True)
 
@@ -286,13 +373,13 @@ elif "📊 My Trends" in page:
 
         # Mood over time
         fig_mood = px.area(df, x="date", y="mood", title="Mood Over Time",
-                           color_discrete_sequence=["#b06ab3"], template="plotly_white")
+                           color_discrete_sequence=["#b06ab3"], template="plotly_dark")
         fig_mood.update_traces(fill="tozeroy", fillcolor="rgba(176,106,179,0.15)", line_width=2.5)
         fig_mood.update_layout(
             font_family="DM Sans", title_font_family="Fraunces",
             yaxis=dict(range=[0, 5.5], tickvals=[1,2,3,4,5],
                        ticktext=["😞 1","😕 2","😐 3","🙂 4","😄 5"]),
-            plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="#111111", paper_bgcolor="#0a0a0a",
             margin=dict(t=40, b=20),
         )
         st.plotly_chart(fig_mood, use_container_width=True)
@@ -302,10 +389,10 @@ elif "📊 My Trends" in page:
             fig_sc = px.scatter(df, x="sleep", y="mood", title="Sleep vs Mood",
                                 color="energy", color_continuous_scale=["#4568dc","#b06ab3"],
                                 size="habit_count", size_max=18,
-                                hover_data=["date","mood_label"], template="plotly_white")
+                                hover_data=["date","mood_label"], template="plotly_dark")
             fig_sc.update_layout(
                 font_family="DM Sans", title_font_family="Fraunces",
-                plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="#111111", paper_bgcolor="#0a0a0a",
                 yaxis=dict(range=[0,5.5]), margin=dict(t=40,b=20),
             )
             st.plotly_chart(fig_sc, use_container_width=True)
@@ -321,7 +408,7 @@ elif "📊 My Trends" in page:
                                         marker=dict(size=6)))
             fig_es.update_layout(
                 title="Energy vs Stress", font_family="DM Sans", title_font_family="Fraunces",
-                plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="#111111", paper_bgcolor="#0a0a0a",
                 yaxis=dict(range=[0,5.5]),
                 legend=dict(orientation="h", yanchor="bottom", y=1.02),
                 margin=dict(t=40, b=20),
@@ -336,10 +423,10 @@ elif "📊 My Trends" in page:
             fig_h = px.bar(hc, x="Count", y="Habit", orientation="h",
                            title="Most Practiced Habits",
                            color="Count", color_continuous_scale=["#b06ab3","#4568dc"],
-                           template="plotly_white")
+                           template="plotly_dark")
             fig_h.update_layout(
                 font_family="DM Sans", title_font_family="Fraunces",
-                plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="#111111", paper_bgcolor="#0a0a0a",
                 coloraxis_showscale=False, yaxis=dict(autorange="reversed"),
                 margin=dict(t=40,b=20),
             )
@@ -411,7 +498,7 @@ elif "🔍 Insights" in page:
                        title="Your Mood Distribution", hole=0.55,
                        color_discrete_sequence=["#b06ab3","#4568dc","#7dd3fc","#f9a8d4","#86efac"])
         fig_d.update_layout(font_family="DM Sans", title_font_family="Fraunces",
-                            paper_bgcolor="rgba(0,0,0,0)", margin=dict(t=40))
+                            paper_bgcolor="#0a0a0a", margin=dict(t=40))
         st.plotly_chart(fig_d, use_container_width=True)
 
 # ══════════════════════════════════════════════════════════════════════════════
